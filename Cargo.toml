@@ -19,9 +19,11 @@ gloo = { version = "0.11.0", default-features = false, features = ["timers"], op
 wasm-bindgen = "0.2.99"
 web-sys = { version = "0.3.76", features = ["Window"] }
 yew = { version = "0.21.0", default-features = false, optional = true }
+dioxus = { version = "0.6.1", optional = true }
 
 [features]
 yew = ["dep:yew", "gloo"]
+dio = ["dioxus", "gloo"]
 
 [profile.release]
 opt-level = "z"
