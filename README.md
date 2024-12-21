@@ -37,7 +37,7 @@ The following are some reasons why Alert-RS is a fantastic addition to your Wasm
 
 Refer to [our guide](YEW.md) to integrate this component into your Yew app.
 
-## 🧬 Dioxus Usage (TODO)
+## 🧬 Dioxus Usage
 
 Refer to [our guide](DIOXUS.md) to integrate this component into your Dioxus app.
 
