@@ -40,7 +40,6 @@ Incorporating Yew Alert into your application is easy. Follow these steps:
                body={"This is an alert message"}
                show_alert={show_alert}
                timeout={2500}
-               alert_class={"w-96 h-48 text-white"}
                icon_class={"flex justify-center"}
                confirm_button_text={"Okay"}
                cancel_button_text={"Cancel"}
@@ -53,7 +52,7 @@ Incorporating Yew Alert into your application is easy. Follow these steps:
                on_cancel={Callback::noop()}
                position={Position::TopRight}
                icon_type={IconType::Success}
-               container_class={"flex items-center text-center justify-center bg-gray-800 text-white border border-gray-600"}
+               alert_class={"flex items-center text-center justify-center bg-gray-800 text-white border border-gray-600"}
                title_class={"dark:text-white"}
                body_class={"dark:text-gray-300"}
                icon_color={""}
@@ -140,7 +139,6 @@ Incorporating Yew Alert into your application is easy. Follow these steps:
 | `icon_class`           | `&'static str` | CSS class for styling the icon.                      | `""`    |
 | `confirm_button_class` | `&'static str` | CSS class for styling the confirm button.            | `""`    |
 | `cancel_button_class`  | `&'static str` | CSS class for styling the cancel button.             | `""`    |
-| `container_class`      | `&'static str` | CSS class for styling the alert container.           | `""`    |
 | `title_class`          | `&'static str` | CSS class for styling the alert title.               | `""`    |
 | `message_class`        | `&'static str` | CSS class for styling the message text in the alert. | `""`    |
 

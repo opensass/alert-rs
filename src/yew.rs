@@ -122,13 +122,6 @@ pub struct AlertProps {
     #[prop_or_default]
     pub cancel_button_class: &'static str,
 
-    /// Custom CSS class for styling the container around the alert.
-    ///
-    /// This is for additional styling of the alert's container, such as margins, borders, etc.
-    /// Defaults to an empty string.
-    #[prop_or_default]
-    pub container_class: &'static str,
-
     /// Custom CSS class for styling the title of the alert.
     ///
     /// This applies additional styling to the title text within the alert.
@@ -271,7 +264,6 @@ pub struct AlertProps {
 /// - **icon_class**: CSS class for styling the icon (`&'static str`). Default: `""`.
 /// - **confirm_button_class**: CSS class for styling the confirm button (`&'static str`). Default: `""`.
 /// - **cancel_button_class**: CSS class for styling the cancel button (`&'static str`). Default: `""`.
-/// - **container_class**: CSS class for styling the alert container (`&'static str`). Default: `""`.
 /// - **title_class**: CSS class for styling the alert title (`&'static str`). Default: `""`.
 /// - **body_class**: CSS class for styling the message text in the alert (`&'static str`). Default: `""`.
 /// - **alert_style**: Default inline styles for the alert (`&'static str`). Default: `DEFAULT_ALERT_STYLE`.

@@ -1,4 +1,4 @@
-# 📚 Alert RS Dioxus Example
+# 📚 Alert RS Leptos Example
 
 ## 🛠️ Pre-requisites:
 
@@ -10,10 +10,16 @@
    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
    ```
 
-1. Install [`Dioxus CLI`](https://dioxuslabs.com/learn/0.5/getting_started):
+1. **Install [`trunk`](https://trunkrs.dev/)**:
 
    ```sh
-   cargo install dioxus-cli
+   cargo install --locked trunk
+   ```
+
+1. **Add the Wasm target**:
+
+   ```sh
+   rustup target add wasm32-unknown-unknown
    ```
 
 ### 🪟 **Windows Users**
@@ -40,30 +46,36 @@
    sudo apt install build-essential pkg-config libudev-dev
    ```
 
-1. Install [`Dioxus CLI`](https://dioxuslabs.com/learn/0.5/getting_started):
+1. **Install `trunk`**:
 
    ```sh
-   cargo install dioxus-cli
+   cargo install --locked trunk
+   ```
+
+1. **Add the Wasm target**:
+
+   ```sh
+   rustup target add wasm32-unknown-unknown
    ```
 
 ## 🚀 Building and Running
 
 1. Fork/Clone the GitHub repository.
 
-   ```sh
+   ```bash
    git clone https://github.com/opensass/alert-rs
    ```
 
 1. Navigate to the application directory.
 
-   ```sh
-   cd alert-rs/examples/dioxus
+   ```bash
+   cd alert-rs/examples/leptos
    ```
 
 1. Run the client:
 
    ```sh
-   dx serve --port 3000
+   trunk serve --port 3000
    ```
 
 Navigate to http://localhost:3000 to explore the landing page.

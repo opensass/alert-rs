@@ -41,7 +41,7 @@ Refer to [our guide](YEW.md) to integrate this component into your Yew app.
 
 Refer to [our guide](DIOXUS.md) to integrate this component into your Dioxus app.
 
-## 🌱 Leptos Usage (TODO)
+## 🌱 Leptos Usage
 
 Refer to [our guide](LEPTOS.md) to integrate this component into your Leptos app.
 
