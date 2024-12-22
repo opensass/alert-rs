@@ -1,91 +1,80 @@
-## 🧬 Alert RS Dioxus Usage
+# 🌱 Leptos Alert-RS Usage
 
-Adding Alert RS to your project is simple:
+Adding Alert-RS to your Leptos project is simple:
 
-1. Make sure your project is set up with **Dioxus**. Refer to the [Dioxus Getting Started Guide](https://dioxuslabs.com/learn/0.6/getting_started) for setup instructions.
+1. Make sure your project is set up with **Leptos**. Refer to their [Getting Started Guide](https://book.leptos.dev/getting_started/index.html) for setup instructions.
 
 1. Add `alert-rs` to your dependencies:
 
    ```sh
-   cargo add alert-rs --features=dio
+   cargo add alert-rs --features=lep
    ```
 
-1. Import `Alert` into your component and start enhancing your app's alert functionality.
+1. Import the `Alert` component into your Leptos component and start showing alerts in your app.
 
 ## 🛠️ Usage
 
-Incorporating the Dioxus Alert into your application is easy. Follow these steps:
+Incorporating Leptos Alert into your application is easy. Follow these steps:
 
-1. Import the Alert component into your project:
+1. Import the Alert component into your Leptos project:
 
    ```rust
-    use dioxus::prelude::*;
-    use alert_rs::dioxus::Alert;
-    use alert_rs::{IconType, Position};
+   use leptos::prelude::*;
+   use alert_rs::leptos::Alert;
    ```
 
-1. Define the alert properties and use the Alert component in your Dioxus component:
+1. Define the alert properties and use the Alert component in your Leptos component:
 
    ```rust
-    use dioxus::prelude::*;
-    use alert_rs::dioxus::Alert;
-    use alert_rs::{IconType, Position};
+   use leptos::prelude::*;
+   use alert_rs::leptos::Alert;
+   use alert_rs::{IconType, Position};
 
-    #[component]
-    pub fn App() -> Element {
-        let mut show_alert = use_signal(|| false);
 
-        rsx! {
-            div {
-                button {
-                    onclick: move |_| show_alert.set(true),
-                    "Show Alert"
-                }
-                Alert {
-                    title: "Alert Title",
-                    body: "This is an alert message",
-                    show_alert: show_alert,
-                    timeout: 2500,
-                    icon_class: "flex justify-center",
-                    confirm_button_text: "Okay",
-                    cancel_button_text: "Cancel",
-                    confirm_button_class: "bg-green-500 text-white rounded",
-                    cancel_button_class: "bg-red-500 text-white rounded",
-                    show_confirm_button: true,
-                    show_cancel_button: true,
-                    show_close_button: true,
-                    on_confirm: move |_| {
-                        // Your confirmation logic
-                    },
-                    on_cancel: move |_| {
-                        // Your cancel logic
-                    },
-                    position: Position::TopRight,
-                    icon_type: IconType::Success,
-                    alert_class: "flex items-center text-center justify-center bg-gray-800 text-white border border-gray-600",
-                    title_class: "text-white",
-                    body_class: "text-gray-300",
-                    icon_color: "",
-                    icon_width: "50",
-                }
-            }
-        }
-    }
+   #[component]
+   pub fn App() -> impl IntoView {
+       let show_alert = signal(true);
+       view! {
+           <Alert
+               title={"Alert Title"}
+               body={"This is an alert message"}
+               show_alert={show_alert}
+               timeout={2500}
+               icon_class={"flex justify-center"}
+               confirm_button_text={"Okay"}
+               cancel_button_text={"Cancel"}
+               confirm_button_class={"bg-green-500 text-white rounded"}
+               cancel_button_class={"bg-red-500 text-white rounded"}
+               show_confirm_button={true}
+               show_cancel_button={true}
+               show_close_button={true}
+               on_confirm={Callback::from(move || {})}
+               on_cancel={Callback::from(move || {})}
+               position={Position::TopRight}
+               icon_type={IconType::Success}
+               alert_class={"flex items-center text-center justify-center bg-gray-800 text-white border border-gray-600"}
+               title_class={"dark:text-white"}
+               body_class={"dark:text-gray-300"}
+               icon_color={""}
+               icon_width={"50"}
+           />
+       }
+   }
    ```
 
 ## 🔧 Props
 
 ### Main Props
 
-| Property              | Type           | Description                                                   | Default   |
-| --------------------- | -------------- | ------------------------------------------------------------- | --------- |
-| `show_alert`          | `Signal<bool>` | The signal controlling the visibility of the alert.           | `false`   |
-| `title`               | `&'static str` | The title text for the alert.                                 | `"Info"`  |
-| `body`                | `&'static str` | The message content of the alert.                             | `""`      |
-| `timeout`             | `u32`          | Timeout duration in milliseconds for the alert to auto-close. | `2500` ms |
-| `show_confirm_button` | `bool`         | Whether to display the confirm button.                        | `true`    |
-| `show_cancel_button`  | `bool`         | Whether to display the cancel button.                         | `true`    |
-| `show_close_button`   | `bool`         | Whether to display the close button.                          | `false`   |
+| Property              | Type                   | Description                                                   | Default   |
+| --------------------- | ---------------------- | ------------------------------------------------------------- | --------- |
+| `show_alert`          | `UseStateHandle<bool>` | The state handle controlling the visibility of the alert.     | `false`   |
+| `title`               | `&'static str`         | The title text for the alert.                                 | `"Info"`  |
+| `body`                | `&'static str`         | The message content of the alert.                             | `""`      |
+| `timeout`             | `u32`                  | Timeout duration in milliseconds for the alert to auto-close. | `2500` ms |
+| `show_confirm_button` | `bool`                 | Whether to display the confirm button.                        | `true`    |
+| `show_cancel_button`  | `bool`                 | Whether to display the cancel button.                         | `true`    |
+| `show_close_button`   | `bool`                 | Whether to display the close button.                          | `false`   |
 
 ### Callback Props
 
@@ -169,6 +158,6 @@ Incorporating the Dioxus Alert into your application is easy. Follow these steps
 ## 💡 Notes
 
 - The `native` prop can be set to `true` to use the browser's default alert behavior instead of the custom component.
-- The alert is displayed based on the `show_alert` signal, which should be controlled by the parent component.
+- The alert is displayed based on the `show_alert` state, which should be controlled by the parent component.
 - Timeout behavior can be adjusted using the `timeout` property, and alert visibility can be toggled using the `show_alert` state.
 - You can customize the alert's appearance, including the icon, buttons, position, and styles.

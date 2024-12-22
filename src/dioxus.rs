@@ -110,12 +110,6 @@ pub struct AlertProps {
     #[props(default = "")]
     pub cancel_button_class: &'static str,
 
-    /// Additional CSS classes for the container wrapping the alert.
-    ///
-    /// Defaults to an empty string.
-    #[props(default = "")]
-    pub container_class: &'static str,
-
     /// Additional CSS classes for the alert title.
     ///
     /// Defaults to an empty string.
@@ -245,7 +239,6 @@ pub struct AlertProps {
 /// - **icon_class**: Custom CSS class for the alert icon (`&'static str`). Default: `""`.
 /// - **confirm_button_class**: Custom CSS class for the confirm button (`&'static str`). Default: `""`.
 /// - **cancel_button_class**: Custom CSS class for the cancel button (`&'static str`). Default: `""`.
-/// - **container_class**: Custom CSS class for the alert's container (`&'static str`). Default: `""`.
 /// - **title_class**: Custom CSS class for the alert title (`&'static str`). Default: `""`.
 /// - **body_class**: Custom CSS class for the alert body (`&'static str`). Default: `""`.
 /// - **alert_style**: Inline style for the alert component (`&'static str`). Default: `DEFAULT_ALERT_STYLE`.
@@ -364,7 +357,7 @@ pub fn Alert(props: AlertProps) -> Element {
         if show_alert() && !native {
             props.will_open.call(());
 
-            let handle = Timeout::new(timeout, move || {
+            let _ = Timeout::new(timeout, move || {
                 show_alert.set(false);
                 props.did_close.call(());
             })
@@ -578,5 +571,7 @@ pub fn Alert(props: AlertProps) -> Element {
                 }
             }
         }
-    } else {rsx!{}}
+    } else {
+        rsx! {}
+    }
 }
